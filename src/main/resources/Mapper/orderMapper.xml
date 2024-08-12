@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.Mapper.OrderMapper">
+    <!--   取得自增长的键值-->
+    <insert id="saveOrder" parameterType="org.example.entity.Order" useGeneratedKeys="true" keyColumn="order_id"
+            keyProperty="orderId">
+        insert into `order` (user_id, business_id, order_total, da_id)
+        VALUES (#{userId}, #{businessId}, #{orderTotal}, #{daId});
+    </insert>
+    <select id="getOrderById" resultType="org.example.entity.Order">
+        select o.*,
+               b.business_id    bbusinessId,
+               b.business_name  bbusinessName,
+               b.delivery_price bdeliveryPrice
+        from `order` o
+                 left join business b on o.business_id = b.business_id
+        where o.order_id = #{orderId}
+    </select>
+    <select id="selectOrderByStatus" resultType="org.example.entity.Order">
+        select o.*,
+               b.business_id    bbusinessId,
+               b.business_name  bbusinessName,
+               b.delivery_price bdeliveryPrice
+        from `order` o
+                 left join business b on o.business_id = b.business_id
+        <where>
+            <if test="stateId!=null">
+                and order_state=#{stateId}
+            </if>
+        </where>
+    </select>
+    <select id="selectAllOrder" resultType="org.example.entity.Order">
+        select o.*,
+               b.business_id    bbusinessId,
+               b.business_name  bbusinessName,
+               b.delivery_price bdeliveryPrice
+        from `order` o
+                 left join business b on o.business_id = b.business_id
+    </select>
+</mapper>

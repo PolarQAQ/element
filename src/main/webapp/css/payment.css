@@ -1,0 +1,133 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper header {
+
+    width: 100%;
+    height: 12vw;
+    background-color: #0097ff;
+
+    color: #fff;
+    font-size: 4.8vw;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper h3 {
+    margin-top: 12vw;
+    box-sizing: border-box;
+    padding: 4vw 4vw;
+
+    color: #999;
+    font-size: 4.8vw;
+    font-weight: 300;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .order-info {
+    box-sizing: border-box;
+    padding: 4vw;
+    font-size: 4vw;
+    color: #666;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .order-info p:last-child {
+    color: orangered;
+}
+
+.wrapper .order-detailed {
+    width: 100%;
+}
+
+.wrapper .order-detailed li {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1vw 4vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrapper .order-detailed li p {
+    font-size: 3vw;
+    color: #666;
+}
+
+.wrapper .payment-type {
+    width: 100%;
+}
+
+.wrapper .payment-type li {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrapper .payment-type li img {
+    width: 33vw;
+    height: 9vw;
+}
+
+.wrapper .payment-type li img .fa-check-circle {
+    font-size: 5vw;
+    color:#38ca73;
+}
+
+.wrapper .payment-button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1vw 4vw;
+}
+
+.wrapper .payment-button button {
+    width: 100%;
+    height: 10vw;
+    border: none;
+
+    background-color: #38ca73;
+    color:#fff;
+}
+
+.wrapper .footer {
+    width: 100%;
+    height: 14vw;
+    background-color: #fff;
+    border-top: solid 1px #ffffff;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.wrapper .footer li i {
+    font-size: 5vw;
+}
+
+.wrapper .footer li p {
+    font-size: 2.8vw;
+}

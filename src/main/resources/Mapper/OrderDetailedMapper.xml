@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.Mapper.OrderDetailedMapper">
+
+    <insert id="saveOrderDetailed" parameterType="org.example.entity.OrderDetailed">
+        insert into orderdetailed (order_id, food_id, quantity)
+        VALUES (#{orderId}, #{foodId}, #{quantity})
+    </insert>
+    <select id="getOrderDetailedByOrderId" resultType="org.example.entity.OrderDetailed">
+        select o.*,
+               f.food_id ffoodId,
+               f.food_name ffoodName,
+               f.food_price ffoodPrice
+        from orderdetailed o left join food f on o.food_id = f.food_id
+        where o.order_id=#{orderId}
+    </select>
+</mapper>

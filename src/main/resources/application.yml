@@ -1,0 +1,18 @@
+spring:
+
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root   #你本地的数据库用户名
+    password: 1234 #你本地的数据库密码
+    url: jdbc:mysql://localhost:3306/ele?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2b8&allowPublicKeyRetrieval=true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true

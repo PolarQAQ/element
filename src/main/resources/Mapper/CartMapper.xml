@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.Mapper.CartMapper">
+<select id="selectCart" resultType="org.example.entity.Cart">
+    select c.*,
+    f.food_id ffoodId,
+    f.food_name ffoodName,
+    f.food_explain ffoodExplain,
+    f.food_img ffoodImg,
+    f.food_price ffoodPrice,
+    f.business_id foodbusinessId,
+    f.remarks fremarks,
+    b.business_id bbusinessId,
+    b.business_name bbusinessName,
+    b.business_address bbusinessAddres,
+    b.business_explain bbusinessExplai ,
+    b.business_img bbsinessImg,
+    b.order_type_id borderTypeId,
+    b.start_price bstartPrice,
+    b.delivery_price bdliveryPrice,
+    b.remarks bremarks
+    from (cart c left join food f on c.food_id = f.food_id)
+    left join business b on b.business_id = c.business_id
+    <where>
+        user_id=#{userId}
+        <if test="businessId!=null">
+            and c.business_id=#{businessId}
+        </if>
+    </where>
+
+</select>
+    <update id="updateCart" parameterType="org.example.entity.Cart">
+        update cart
+        set food_id=#{foodId},
+            business_id=#{businessId},
+            user_id=#{userId},
+            quantity=#{quantity}
+        where food_id = #{foodId}
+
+    </update>
+    <delete id="deleteCart" parameterType="org.example.entity.Cart">
+        DELETE
+        FROM cart
+        <where>
+        <if test="foodId != null">
+            and cart.food_id = #{foodId}
+        </if>
+        <if test="businessId!=null">
+            and cart.business_id = #{businessId}
+        </if>
+           <if test="userId != null">
+               and cart.user_id = #{userId}
+           </if>
+        </where>
+    </delete>
+</mapper>
